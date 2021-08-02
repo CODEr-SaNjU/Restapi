@@ -6,7 +6,6 @@ from .managers import UserManager
 from django.utils import timezone, tree
 from django.core.validators import RegexValidator
 
-
 class UserProfile(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(
         "Email Address",
@@ -24,7 +23,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
         unique=True,
         error_messages={'unique': (
             "A user with that phone number address already exists")},
-        null=True, blank=True)
+        )
     first_name = models.CharField("First Name", max_length=300)
     last_name = models.CharField('Last Name',max_length=300)
     user_type = models.CharField('User Type',max_length=300)
