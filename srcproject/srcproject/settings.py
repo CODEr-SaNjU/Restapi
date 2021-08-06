@@ -14,7 +14,6 @@ from pathlib import Path
 from decouple import config
 import os
 
-from django import conf
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -117,6 +116,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+#send email config 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/

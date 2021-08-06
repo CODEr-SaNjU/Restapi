@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .forms import UserProfileCreationForm, UserProfileChangeForm
-from .models import UserProfile
+from .models import UserProfile, LeadGenerator
 
 
 class UserProfileAdmin(UserAdmin):
@@ -26,3 +26,4 @@ class UserProfileAdmin(UserAdmin):
 
 
 admin.site.register(UserProfile, UserProfileAdmin)
+admin.site.register(LeadGenerator)

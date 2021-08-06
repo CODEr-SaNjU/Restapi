@@ -51,4 +51,28 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
         '''
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
+class EmailOtp(models.Model):
+    email = models.EmailField(max_length=254,unique=True)
+    otp = models.CharField(max_length=8,blank=True,null=True)
+    count       = models.IntegerField(default = 0, help_text = 'Number of otp sent')
+    logged      = models.BooleanField(default = False, help_text = 'If otp verification got successful')
+    forgot      = models.BooleanField(default = False, help_text = 'only true for forgot password')
+    forgot_logged = models.BooleanField(default = False, help_text = 'Only true if validdate otp forgot get successful')
+
+    def __str__(self):
+        return str(self.email) + 'is sent' + str(self.otp)
+
+
+class LeadGenerator(models.Model):
+    lead_name       = models.CharField(max_length=200)
+    lead_source     = models.CharField(max_length=300)
+    lead_user_email = models.EmailField(max_length=300)
+    lead_created_at = models.DateTimeField('lead created', default=timezone.now)
+
     
+    def __str__(self):
+        return self.lead_name
+        
+    class Meta:
+        verbose_name = ('Lead Generator')
+        verbose_name_plural = ('Lead Generators')
