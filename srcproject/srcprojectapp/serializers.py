@@ -56,6 +56,9 @@ class LeadGeneratorSerializer(serializers.ModelSerializer):
     class Meta:
         model = LeadGenerator
         fields = '__all__'
+        extra_kwargs = {
+            'lead_created_at':{'write_only': True}
+        }
 class LeadUpdateGeneratorSerializer(serializers.ModelSerializer):
     class Meta:
         model = LeadGenerator
